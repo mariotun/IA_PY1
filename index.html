@@ -75,13 +75,13 @@
 
     (async() => {
       console.log("Cargando modelo...");
-      // localhost
-      const modelUrl = "http://192.168.153.134:3000/model.json";
-      modelo = await tf.loadLayersModel(modelUrl);
+      modelo = await tf.loadLayersModel("model.json");
       console.log("Modelo cargado");
     })();
 
-
+    window.onload = function() {
+      mostrarCamara();
+    }
 
     function mostrarCamara() {
       var opciones = {
@@ -90,10 +90,6 @@
           width: tamano, height: tamano
         }
       }
-
-    window.onload = function() {
-      mostrarCamara();
-    }
 
       if (navigator.mediaDevices.getUserMedia) {
         navigator.mediaDevices.getUserMedia(opciones)
@@ -104,9 +100,8 @@
               predecir();
             })
             .catch(function(err) {
-                console.log("CAMARA:",err);
               alert("No se pudo utilizar la camara :(");
-              
+              console.log("CAMARA:",err);
               alert(err);
             })
       } else {
