@@ -32,7 +32,7 @@
           <div class="col-12 col-md-8 offset-md-2 text-center">
             <video id="video" playsinline autoplay style="width: 1px;"></video>
             <button class="btn btn-success mb-2" id="cambiar-camara" onclick="cambiarCamara();">Cambiar camara</button>
-            <canvas id="canvas" width="800" height="800" style="max-width: 100%;"></canvas>
+            <canvas id="canvas" width="800" height="700" style="max-width: 100%;"></canvas>
             <canvas id="otrocanvas" width="150" height="150" style="display: none"></canvas>
             <p id="resultado"></p>            
           </div>
@@ -173,12 +173,15 @@
         var resultado = modelo.predict(tensor).dataSync();
 
         var respuesta;
+        var total;
         console.log("resultado:",resultado)
         if (resultado >= 0 && resultado <= 0.05) {
-          let total = (resultado+(100-(resultado*100)))
+          total = (resultado+(100-(resultado*100)))
+          console.log("tipo de total:", typeof total);
           respuesta = `Es ${Number(total.toFixed(2))}% Gato`;
         } else if (resultado >= 0.95 && resultado <=1){
-          let total = (resultado*100)
+          total = (resultado*100)
+          console.log("tipo de total:", typeof total);
           respuesta = `Es ${Number(total.toFixed(2))}% Perro`;
         }else{
           respuesta = "Objeto no reconocido"
