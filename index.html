@@ -160,10 +160,12 @@
 
         var respuesta;
         console.log("resultado:",resultado)
-        if (resultado <= .5) {
+        if (resultado >= 0 && resultado <= 0.10) {
           respuesta = "Gato";
-        } else {
+        } else if (resultado >= 0.90 && resultado <=0.99){
           respuesta = "Perro";
+        }else{
+          respuesta = "objeto no reconocido"
         }
         document.getElementById("resultado").innerHTML = respuesta;
 
