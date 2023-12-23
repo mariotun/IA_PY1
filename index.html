@@ -30,11 +30,11 @@
       <div class="container mt-5">
         <div class="row">
           <div class="col-12 col-md-4 offset-md-4 text-center">
-            <video id="video" playsinline autoplay style="width: 1px;"></video>
+            <video id="video" playsinline autoplay style="width: 100px;"></video>
             <button class="btn btn-success mb-2" id="cambiar-camara" onclick="cambiarCamara();">Cambiar camara</button>
             <canvas id="canvas" width="800" height="800" style="max-width: 100%;"></canvas>
             <canvas id="otrocanvas" width="150" height="150" style="display: none"></canvas>
-            <div id="resultado"></div>            
+            <p id="resultado"></p>            
           </div>
         </div>
       </div>
@@ -171,9 +171,10 @@
         var respuesta;
         console.log("resultado:",resultado)
         if (resultado >= 0 && resultado <= 0.05) {
-          respuesta = `Es ${(resultado+(100-(resultado*100)))} Gato`;
+          
+          respuesta = `Es ${(resultado.toFixed(2)+(100-(resultado.toFixed(2)*100)))} Gato`;
         } else if (resultado >= 0.95 && resultado <=1){
-          respuesta = `Es ${resultado*100} Perro`;
+          respuesta = `Es ${resultado.toFixed(2)*100} Perro`;
         }else{
           respuesta = "objeto no reconocido"
         }
