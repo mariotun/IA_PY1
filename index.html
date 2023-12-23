@@ -20,7 +20,7 @@
       <div class="px-4 py-2 my-2 text-center border-bottom">
         <h1 class="display-5 fw-bold">Perro ó Gato</h1>
         <div class="col-lg-6 mx-auto">
-          <p class="lead mb-0">Clasificaci&oacute;n de im&aacute;genes (Perro o Gato) usando la c&aacute;mara web utilizando Tensorflow.js</p>
+          <p class="lead mb-0">Clasificaci&oacute;n de im&aacute;genes utilizando Tensorflow.js</p>
           
         </div>
       </div>
@@ -31,8 +31,8 @@
         <div class="row">
           <div class="col-12 col-md-4 offset-md-4 text-center">
             <video id="video" playsinline autoplay style="width: 1px;"></video>
-            <button class="btn btn-primary mb-2" id="cambiar-camara" onclick="cambiarCamara();">Cambiar camara</button>
-            <canvas id="canvas" width="400" height="400" style="max-width: 100%;"></canvas>
+            <button class="btn btn-success mb-2" id="cambiar-camara" onclick="cambiarCamara();">Cambiar camara</button>
+            <canvas id="canvas" width="800" height="800" style="max-width: 100%;"></canvas>
             <canvas id="otrocanvas" width="150" height="150" style="display: none"></canvas>
             <div id="resultado"></div>            
           </div>
@@ -40,6 +40,16 @@
       </div>
 
       <div class="b-example-divider"></div>
+
+      <div class="bg-dark text-secondary mt-5 px-4 py-2 text-center">
+        <div class="py-5">
+          <img src="./Usac_logo.png" alt="logo_usac" width="150" height="150">
+          <h1 class="display-5 fw-bold text-white">Universidad de San Carlos de Guatemala</h1>
+          <div class="col-lg-6 mx-auto">
+            <p class="fs-5 mb-4">Inteligencia Artificial 1</p>
+          </div>
+        </div>
+      </div>
 
       <div class="b-example-divider mb-0"></div>
     </main>
@@ -50,7 +60,7 @@
 
   <script type="text/javascript">
 
-    var tamano = 400;
+    var tamano = 800;
     var video = document.getElementById("video");
     var canvas = document.getElementById("canvas");
     var otrocanvas = document.getElementById("otrocanvas");
@@ -161,9 +171,9 @@
         var respuesta;
         console.log("resultado:",resultado)
         if (resultado >= 0 && resultado <= 0.05) {
-          respuesta = "Gato";
+          respuesta = `Es ${(resultado+(100-(resultado*100)))} Gato`;
         } else if (resultado >= 0.95 && resultado <=1){
-          respuesta = "Perro";
+          respuesta = `Es ${resultado*100} Perro`;
         }else{
           respuesta = "objeto no reconocido"
         }
